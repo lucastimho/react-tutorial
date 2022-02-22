@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 
 class Form extends Component {
+  initialState = {
+    name: "",
+    job: "",
+  };
   handleChange = (event) => {
     const { name, value } = event.target;
 
     this.setState({
       [name]: value,
     });
+  };
+  submitForm = () => {
+    this.props.handleSubmit(this.state);
+    this.setState(this.initialState);
   };
   render() {
     const { name, job } = this.state;
