@@ -1,16 +1,5 @@
 import React, { Component } from "react";
 
-const Table = (props) => {
-  const { characterData, removeCharacter } = props;
-
-  return (
-    <table>
-      <TableHeader />
-      <TableBody characterData={characterData} removeCharacter={removeCharacter} />
-    </table>
-  );
-};
-
 const TableHeader = () => {
   return (
     <thead>
@@ -37,5 +26,18 @@ const TableBody = (props) => {
 
   return <tbody>{rows}</tbody>;
 };
+
+class Table extends Component {
+  render() {
+    const { characterData } = this.props;
+
+    return (
+      <table>
+        <TableHeader />
+        <TableBody characterData={characterData} />
+      </table>
+    );
+  }
+}
 
 export default Table;

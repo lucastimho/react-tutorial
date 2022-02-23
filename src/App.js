@@ -9,6 +9,25 @@ class App extends Component {
   handleSubmit = (character) => {
     this.setState({ characters: [...this.state.characters, character] });
   };
+  removeCharacter = (index) => {
+    const { characters } = this.state;
+
+    this.setState({
+      characters: characters.filter((character, i) => {
+        return i !== index;
+      }),
+    });
+  };
+  render() {
+    const { characters } = this.state;
+    return (
+      <div>
+        <Table characterData={characters} removeCharacter={this.removeCharacter} />
+        <h3>Add New</h3>
+        <Form handleSubmit={this.handleSubmit} />
+      </div>
+    );
+  }
 }
 
 export default App;
